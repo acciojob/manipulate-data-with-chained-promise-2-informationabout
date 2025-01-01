@@ -1,21 +1,25 @@
-//your JS code here. If required.
 function getNumbers() {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve([1, 2, 3, 4]);
-        }, 0);
+        }, 3000);
     });
 }
+
 function updateOutput(message) {
     document.getElementById("output").textContent = message;
 }
+
 getNumbers()
     .then((numbers) => {
+        // Filter even numbers
         const evenNumbers = numbers.filter(num => num % 2 === 0);
+
         setTimeout(() => {
             updateOutput("Even numbers: " + evenNumbers.join(", "));
         }, 1000); 
 
+    
         return new Promise((resolve) => {
             setTimeout(() => {
                 const doubledEvenNumbers = evenNumbers.map(num => num * 2);
@@ -24,6 +28,7 @@ getNumbers()
         });
     })
     .then((doubledNumbers) => {
+
         updateOutput("Doubled even numbers: " + doubledNumbers.join(", "));
     })
     .catch((error) => {
