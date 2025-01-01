@@ -3,13 +3,12 @@ function getNumbers() {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve([1, 2, 3, 4]);
-        }, 3000);
+        }, );
     });
 }
 function updateOutput(message) {
     document.getElementById("output").textContent = message;
 }
-
 getNumbers()
     .then((numbers) => {
         const evenNumbers = numbers.filter(num => num % 2 === 0);
