@@ -8,17 +8,14 @@ function getNumbers() {
 
 function updateOutput(message) {
     document.getElementById("output").textContent = message;
+	console.log(message);
 }
 
 getNumbers()
     .then((numbers) => {
-        // Filter even numbers
         const evenNumbers = numbers.filter(num => num % 2 === 0);
 
-        setTimeout(() => {
-            updateOutput("Even numbers: " + evenNumbers.join(", "));
-        }, 1000); 
-
+        updateOutput("Even numbers: " + evenNumbers.join(", "));
     
         return new Promise((resolve) => {
             setTimeout(() => {
@@ -28,7 +25,6 @@ getNumbers()
         });
     })
     .then((doubledNumbers) => {
-
         updateOutput("Doubled even numbers: " + doubledNumbers.join(", "));
     })
     .catch((error) => {
